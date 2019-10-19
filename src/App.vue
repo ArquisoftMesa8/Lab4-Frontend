@@ -2,7 +2,7 @@
   <div id="app">
   
   
-  <p>{{ message }}</p>
+  
  
   <p>Name: {{ name }}</p>
  
@@ -13,7 +13,9 @@
   <br/>
   <button v-on:click= "consumeREST"> Crear con REST </button>
   <button v-on:click= "consumeGraphQL"> Crear con GraphQL </button>
-
+    <br/>
+    
+    <p>{{ message }}</p>
 
   </div>
 </template>
@@ -29,29 +31,29 @@ export default {
 
     data: ()=>({
         message: '',
-        name: "Default Name",
-        credits: 0
+        name: "Cálculo Diferencial",
+        credits: 4
         }),
     methods:   {
         consumeREST : async function () {
 
 
             this.message = "Rest"
-            const url = "http://3.229.229.156:3000/courses-ms/resources/courses/"
+            const url = "http://3.93.76.44:8080/messages"
 
             const response = await axios.post(url,
                 {
-                    headers:{
-                        'Access-Control-Allow-Origin': '*'
-                    },
-                    name: this.name,
-                    credits: this.credits
-                }
-            
+                 data:{
+                        name: this.name,
+                        credits: this.credits
+                    }
+                }            
             )
             .catch(e => console.log('Error: ', e) )
 
-            //console.log(response)
+
+            console.log(response)
+
 
         },
         consumeGraphQL: async function() {
@@ -90,4 +92,19 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+
+button{
+
+    margin:2rem;
+    padding:1rem;
+    background-color: greenyellow;
+    border:0px ;
+}
+button:hover{
+    background-color: chartreuse;
+    cursor: pointer; 
+
+}
+
 </style>
+

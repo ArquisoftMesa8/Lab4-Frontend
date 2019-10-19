@@ -1,9 +1,9 @@
 <template>
   <div class="hello">
     <h3 v-bind = "data" >  {{ data.msg }}</h3>
-    <h4  v-bind = "data"> Código:      {{ data.code }}     </h4>
-    <h4  v-bind = "data"> Nombre:      {{ data.name }}     </h4>
-    <h4  v-bind = "data"> Créditos: {{ data.credits }}  </h4>
+    <h4  v-bind = "data"> Código:  {{ data.code }} </h4>
+    <h4  v-bind = "data"> Nombre:  {{ data.name }} </h4>
+    <h4  v-bind = "data"> Créditos: {{ data.credits }} </h4>
   </div>
 </template>
 
@@ -36,3 +36,5 @@ a {
   color: #42b983;
 }
 </style>
+
+

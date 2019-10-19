@@ -2,7 +2,7 @@
   <div id="app"> 
 
   <h1> Laboratorio 4 - Frontend </h1>
-  
+
   <p>Nombre: {{ name }}</p>
   <input v-model="name"> <br/>
   <p>Creditos: {{ credits }}</p>
@@ -55,7 +55,6 @@ export default {
 
             console.log(response)
             if(response && response.status == 201) {
-                    
                     this.message = {
                         msg:"Curso creado satisfactoriamente desde Microservicio:",                   
                         code: response.data.code,
@@ -68,10 +67,8 @@ export default {
 
         },
         consumeGraphQL: async function() {
-            
-            
-            const url = "http://3.229.229.156:5000/graphql/" //Url del microservicio courses-ms
-
+        
+            const url = "http://3.229.229.156:5000/graphql/" //URL del Api-Gateway
             const response = await axios.post(url, {
                 "query" : `mutation {
                         createCourse(course: {
@@ -89,7 +86,7 @@ export default {
             }).catch(e => console.log('Error: ', e) )
 
             console.log(response)
-                    if( response && response.status == 200) {
+            if( response && response.status == 200) {
                     
                this.message = {
                         msg:"Curso creado satisfactoriamente desde Microservicio:",                   
@@ -97,10 +94,8 @@ export default {
                         name: response.data.data.createCourse.name,
                         credits: response.data.data.createCourse.credits,
                         professor: response.data.data.createCourse.professor
-                     }
-
                 }
-
+            }
         }                
     }
 }   

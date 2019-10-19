@@ -51,7 +51,7 @@ export default {
             )
             .catch(e => console.log('Error: ', e) )
 
-            console.log(response)
+            //console.log(response)
 
         },
         consumeGraphQL: async function() {
@@ -73,7 +73,7 @@ export default {
                 }`          
             }).catch(e => console.log('Error: ', e) )
 
-            console.log(response)
+            //console.log(response)
 
         }                
     }

@@ -11,11 +11,14 @@
   <p>Credits: {{ credits }}</p>
   <input type="number" v-model="credits">
   <br/>
+  <p>Professor: {{ professor }}</p>
+  <input v-model="professor">
+  <br/>
   <button v-on:click= "consumeREST"> Crear con REST </button>
   <button v-on:click= "consumeGraphQL"> Crear con GraphQL </button>
     <br/>
     
-    <p>{{ message }}</p>
+    {{ message }}
 
   </div>
 </template>
@@ -31,21 +34,21 @@ export default {
 
     data: ()=>({
         message: '',
-        name: "Cálculo Diferencial",
+        name: "Nombre del curso",
+        professor: "Nombre del profesor",
         credits: 4
         }),
     methods:   {
         consumeREST : async function () {
-
-
-            this.message = "Rest"
-            const url = "http://3.93.76.44:8080/messages"
-
+            
+            const url = "http://3.229.229.156:3000/courses-ms/resources/courses"
             const response = await axios.post(url,
-                {
-                 data:{
+            {
+                data:
+                    {
                         name: this.name,
-                        credits: this.credits
+                        credits: this.credits,
+                        professor: this.professor
                     }
                 }            
             )
@@ -53,7 +56,17 @@ export default {
 
 
             console.log(response)
+            if(response && response.status == 201) {
+                    
+                    this.message = `Curso creado satisfactoriamente desde Microservicio:\n
+                    
+                     Código: ${response.data.code}
+                     \nNombre: ${this.name},
+                     \nCréditos: ${this.credits}
+                     \nProfesor: ${this.professor}
+                     "`
 
+                }
 
         },
         consumeGraphQL: async function() {
@@ -67,15 +80,28 @@ export default {
                         createCourse(course: {
                             name: "${this.name}"
                             credits: ${this.credits}
+                            professor:  "${this.professor}"
                         })
                     {
                             name
                             credits
+                            professor
                     }
                 }`          
             }).catch(e => console.log('Error: ', e) )
 
-            //console.log(response)
+            console.log(response)
+                    if( response && response.status == 200) {
+                    
+                    this.message = `Curso creado satisfactoriamente desde API Gateway:\n
+                    
+                     Código: ${response.data.code}
+                     \nNombre: ${this.name},
+                     \nCréditos: ${this.credits}
+                     \nProfesor: ${this.professor}
+                     "`
+
+                }
 
         }                
     }

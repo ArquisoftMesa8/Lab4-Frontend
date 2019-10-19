@@ -42,12 +42,11 @@ export default {
             const url = "http://3.229.229.156:3000/courses-ms/resources/courses"  //Url del microservicio courses-ms
             const response = await axios.post(url,
             {
-                data:
-                    {
-                        name: this.name,
-                        credits: this.credits,
-                        professor: this.professor
-                    }
+                
+                    name: this.name,
+                    credits: this.credits,
+                    professor: this.professor
+                    
                 }            
             )
             .catch(e => console.log('Error: ', e) )

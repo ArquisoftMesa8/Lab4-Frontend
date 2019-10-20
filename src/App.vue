@@ -88,7 +88,7 @@ export default {
             if( response && response.status == 200) {
                     
                this.message = {
-                        msg:"Curso creado satisfactoriamente desde Microservicio:",                   
+                        msg:"Curso creado satisfactoriamente desde API-Gateway :",                   
                         code: response.data.data.createCourse.code,
                         name: response.data.data.createCourse.name,
                         credits: response.data.data.createCourse.credits,

@@ -1,4 +1,11 @@
-# lab_4
+# Laboratorio 4 - Front End - Arquitectura de Software
+
+
+## Vue installation
+```
+yarn global add @vue/cli
+```
+
 
 ## Project setup
 ```

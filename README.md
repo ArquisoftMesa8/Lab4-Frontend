@@ -1,1 +1,31 @@
-# Lab4-Frontend
+# Laboratorio 4 - Front End - Arquitectura de Software
+
+
+## Vue installation
+```
+yarn global add @vue/cli
+```
+
+
+## Project setup
+```
+yarn install
+```
+
+### Compiles and hot-reloads for development
+```
+yarn serve
+```
+
+### Compiles and minifies for production
+```
+yarn build
+```
+
+### Lints and fixes files
+```
+yarn lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
